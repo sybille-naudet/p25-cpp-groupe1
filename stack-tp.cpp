@@ -1,8 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 // Nous allons implémenter une pile d'entiers de manière très basique.
-// Nous la complexifierons par la suite.
-
+// Nous la complexifierons par la suite
 // La pile est constituée:
 //    - d'un tableau d'entier, avec sa taille et son nombre d'éléments empilés
 //    - des quatre fonctions: push, pop, top, print, is_empty et is_full
