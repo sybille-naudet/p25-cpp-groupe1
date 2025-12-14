@@ -50,12 +50,33 @@
 
 // Voici un exemple de main qui doit fonctionner avec votre liste chaînée:
 
+#include <iostream>
+
 struct Cell {
-// votre code ici
+    int value;
+    Cell *next; //adresse de la cellule d'après
+    Cell(int val, Cell *n) : value(val), next(n) {} //constructeur
 };
 
 struct LinkedList {
-  // votre code ici
+    Cell *head;
+    LinkedList() : head(nullptr){
+    Cell *now = head;
+    while (now != nullptr) {
+      Cell *next = now -> next;
+      now = next;
+    }
+    }
+    void push_front(int v){
+
+    }
+    void print(){
+
+    }
+    void remove(int val){
+
+    }
+
 };
 
 int main () {
