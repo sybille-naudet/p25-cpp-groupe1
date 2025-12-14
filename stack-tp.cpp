@@ -75,14 +75,32 @@ int pop(int tab[],int taille, int& nb) // (cette fonction dépile)
 // https://en.cppreference.com/w/cpp/header/stdexcept.html
 // pour un exemple d'exception voir le fichier exception.cpp
 
+//code faux car ne garde pas en mémoire le tableau
+//int* create_stack (int size){
+//    int tab[size];
+//    return tab;
+//}
+
+
+int* create_stack(int size){
+    int* t = new int[size];
+    return t;
+}
+
+void delete_stack(int *argv){
+    delete[] argv;
+}
+
 int main()
 {
 
     // on définit les 3 variables constituant la pile
     int taille = 5;
+    int* tab = create_stack(taille);
     int stack[taille];
     int nb = 0;
 
+    push(tab, taille, nb, -17);
     // rajoutez aux blocks catch les erreurs
     // pouvant être déclenchées par les opérations sur la pile
     try
