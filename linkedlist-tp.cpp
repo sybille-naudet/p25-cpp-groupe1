@@ -8,7 +8,7 @@
 //   - la dernière cellule n'a pas de cellule suivante
 
 // Par exemple, la liste chaînée suivante contient les entiers 42, 12 et 45.
-// 42 -> 12 -> 45 -> null
+// 42 -> 12 -> 45 -> nullbon
 
 // Une cellule contient donc deux choses: une valeur et un pointeur vers sa cellule suivante
 //   qui est l'adresse mémoire de la cellule suivante.
@@ -68,13 +68,29 @@ struct LinkedList {
     }
     }
     void push_front(int v){
-
+        Cell *nouvelle_Cell = new Cell(v, head);
+        head = nouvelle_Cell;
     }
     void print(){
+        Cell *now = head;
+        std::cout<<now->value;
+        now = now->next;
+        std::cout<<std::endl;
+        }
 
     }
-    void remove(int val){
+    void remove(int val){ //2 cas : soit la valeur est au début, soit elle est ailleurs
+        if (head->value == val) { //valeur au début
+            //je ne sais pas comment faire
+            return;
+        }
+        if (current->next == val){
+            current->next = nextCell->next;
+            delete nextCell;
+            return;
 
+        }
+        current = current->next;
     }
 
 };
