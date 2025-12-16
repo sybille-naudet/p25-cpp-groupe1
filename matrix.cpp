@@ -1,6 +1,7 @@
 #include <iostream>
-struct Buffer
+class Buffer
 {
+    friend class Matrix;
     int size;
     int compteur;
     double* tab;
@@ -17,12 +18,13 @@ struct Buffer
     }
 };
 
-struct Matrix
+class Matrix
 {
+    friend class Buffer;
     int Ligne;
     int Colonne;
     Buffer* B;
-
+    public : 
     Matrix(int l, int c) : Ligne(l), Colonne(c)
     {
         int size = l*c;
