@@ -60,39 +60,54 @@ struct Cell {
 
 struct LinkedList {
     Cell *head;
-    LinkedList() : head(nullptr){
-    Cell *now = head;
-    while (now != nullptr) {
-      Cell *next = now -> next;
-      now = next;
-    }
-    }
-    void push_front(int v){
-        Cell *nouvelle_Cell = new Cell(v, head);
-        head = nouvelle_Cell;
-    }
-    void print(){
+
+    LinkedList() : head(nullptr) {}
+
+    ~LinkedList() {
         Cell *now = head;
-        std::cout<<now->value;
-        now = now->next;
-        std::cout<<std::endl;
+        while (now != nullptr) {
+            Cell *nextCell = now->next;
+            delete now;
+            now = nextCell;
         }
-
-    }
-    void remove(int val){ //2 cas : soit la valeur est au début, soit elle est ailleurs
-        if (head->value == val) { //valeur au début
-            //je ne sais pas comment faire
-            return;
-        }
-        if (current->next == val){
-            current->next = nextCell->next;
-            delete nextCell;
-            return;
-
-        }
-        current = current->next;
     }
 
+    void push_front(int v) {
+        head = new Cell(v, head);
+    }
+
+    void print() {
+        Cell *now = head;
+        while (now != nullptr) {
+            std::cout << now->value << " ";
+            now = now->next;
+        }
+        std::cout << std::endl;
+    }
+
+    void remove(int v) {
+        if (head == nullptr) return;
+
+        if (head->value == v) {
+            Cell *d = head;
+            head = head->next;
+            delete d;
+            return;
+        }
+
+        Cell *pre = head;
+        Cell *actuelle = head->next;
+        while (actuelle != nullptr) {
+            if (actuelle->value == v) {
+                Cell* d = actuelle;
+                pre->next = actuelle->next;
+                delete d;
+                return;
+            }
+            pre = actuelle;
+            actuelle = actuelle->next;
+        }
+    }
 };
 
 int main () {
