@@ -144,7 +144,7 @@ struct Node
 
      void insert(int v){
           if (value>v){
-               if(Left==nullptr){
+               if(Left==nullptr) {
                     Left=new Node(v);
                }
                else {
@@ -152,21 +152,21 @@ struct Node
                }
           }
           else if(value<v){
-               if(Right==nullptr){
+               if(Right==nullptr) {
                     Right=new Node(v);
                }
-               else{
+               else {
                     Right->insert(v);
                }
           }
      }
 
      bool search(int v){
-          if(value==v){
+          if(value==v) {
                return true;
           }
-          else if(value>v){
-               if(Left==nullptr){
+          else if(value>v) {
+               if(Left==nullptr) {
                     return false;
                }
                else {
@@ -174,39 +174,40 @@ struct Node
                }
             }
           else{
-               if(Right==nullptr){
+               if(Right==nullptr) {
                     return false;
                }
-               else{
+               else {
                     return Right->search(v);
                }
           }
      }
+
      void depth(Order o){
-        if (o == Prefix){
-          std::cout << value << " ";
+          if (o == Prefix) {
+               std::cout << value << " ";
           }
-          if (Left!=nullptr){
-           Left->depth(o);
-        }
-        if (o == Infix){
-          std::cout << value << " ";
-        }
-        if (Right!=nullptr){
-          Right->depth(o);
-        }
-        if (o == Postfix){
-          std::cout << value << " ";
-        }
-     }
+          if (Left != nullptr) {
+               Left->depth(o);
+          }
+          if (o == Infix) {
+               std::cout << value << " ";
+          }
+          if (Right != nullptr) {
+               Right->depth(o);
+          }
+          if (o == Postfix) {
+               std::cout << value << " ";
+          }
+}
      void print(int i=0){
-        if (Left!=nullptr){
-            Left->print(i+5);
-        }
-        if (Right!=nullptr){
+          if (Right!=nullptr){
             Right->print(i+5);
-        }
-        std::cout<<std::string(i,' ')<<value<<std::endl;
+          }
+          std::cout<<std::string(i,' ')<<value<<std::endl;
+          if (Left!=nullptr){
+            Left->print(i+5);
+          }    
      }
 
 };
@@ -223,12 +224,13 @@ struct BinaryTree
           }
      }
      void depth(Order o) {
-          if(root!=nullptr){
-               std::cout<<'{';
-               root->depth(o);
-               std::cout<<'}'<<std::endl;
-          }
-     }
+    if(root != nullptr){
+        std::cout << "{ "; 
+        root->depth(o);
+        std::cout << "}" << std::endl;
+    }
+}
+
      bool search(int v) {
           if(root==nullptr){
                return false;
@@ -274,8 +276,6 @@ int main()
      
     std::cout << std::boolalpha << b.search(14) << std::endl;
 
-     return 0;
-
      std::cout << "Infix ";
      b.depth(Order::Infix);
      std::cout << "Postfix ";
@@ -296,6 +296,7 @@ int main()
      for (int i = 30; i > 15; i--)
           bad2.insert(i);
      bad2.print();
+     return 0;
 }
 
 /* l'exécution de ce programme donne:
